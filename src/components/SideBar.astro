@@ -1,0 +1,33 @@
+---
+import IconGithub from './icons/IconGithub.astro';
+import IconLinkedIn from './icons/IconLinkedIn.astro';
+import IconMenu from './icons/IconMenu.astro';
+import MobileNav from './MobileNav.svelte';
+---
+
+<div class="flex items-start justify-between lg:block lg:w-52">
+  <div class="flex items-center lg:flex-col">
+    <a href="/" class="block flex-shrink-0 w-12 lg:w-32 group">
+      <img
+        src="/img/profile-photo.jpg"
+        alt="Bill Kerr"
+        class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
+      />
+    </a>
+    <div class="ml-4 lg:ml-0 lg:mt-4 flex flex-col leading-none">
+      <span class="font-black text-2xl">Bill Kerr</span>
+      <span class="text-gray-600">Software Developer</span>
+      <div class="hidden mt-2 lg:flex items-center">
+        <a href="https://github.com/bill-kerr">
+          <IconGithub class="h-6 w-6 text-gray-400 hover:text-github transition-colors" />
+        </a>
+        <a href="https://www.linkedin.com/in/william-kerr-32394473/" class="ml-3">
+          <IconLinkedIn class="h-6 w-6 text-gray-400 hover:text-linkedin transition-colors" />
+        </a>
+      </div>
+    </div>
+  </div>
+  <MobileNav client:load>
+    <IconMenu class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
+  </MobileNav>
+</div>

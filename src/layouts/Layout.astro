@@ -1,9 +1,13 @@
 ---
+import BlockPattern from '../components/BlockPattern.astro';
+import SideBar from '../components/SideBar.astro';
+
 export interface Props {
 	title: string;
+	hideSidebar?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, hideSidebar = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,21 +19,47 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen">
+		<BlockPattern />
+		<div class="relative max-w-screen-lg mx-auto p-6 flex flex-col lg:flex-row min-h-screen">
+			{!hideSidebar ? <SideBar /> : null}
+			<main>
+				<slot />
+			</main>
+		</div>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+
+<style>
+	@font-face {
+		font-family: 'Nunito Sans';
+		src: url('/fonts/NunitoSans-Regular.ttf');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
+
+	@font-face {
+		font-family: 'Nunito Sans';
+		src: url('/fonts/NunitoSans-Bold.ttf');
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+
+	@font-face {
+		font-family: 'Nunito Sans';
+		src: url('/fonts/NunitoSans-Black.ttf');
+		font-weight: 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Source Code Pro';
+		src: url('/fonts/SourceCodePro-VariableFont_wght.ttf');
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
 	}
 </style>
