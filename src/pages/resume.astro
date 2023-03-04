@@ -1,0 +1,282 @@
+---
+import IconDownload from "~/components/icons/IconDownload.astro";
+import IconLink from "~/components/icons/IconLink.astro";
+import ResumeHeader from "~/components/ResumeHeader.astro";
+import ResumeItem from "~/components/ResumeItem.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Resume">
+	<div class="flex justify-start sm:justify-end">
+		<a
+			href="/docs/bill-kerr-resume.pdf"
+			class="px-1 flex items-center font-bold text-gray-700 hyperlink"
+			download
+		>
+			<IconDownload class="h-6 w-6 text-gray-600" />
+			<span class="ml-2">Download resume as PDF</span>
+		</a>
+	</div>
+
+	<div class="mt-6 md:p-6 md:bg-white md:shadow-lg rounded-lg text-gray-700 space-y-12">
+		<div class="flex flex-col lg:flex-row justify-between lg:items-center">
+			<div>
+				<h2 class="text-5xl font-black">Bill Kerr</h2>
+				<p>Software Developer</p>
+			</div>
+			<address class="mt-4 lg:mt-0 text-sm lg:text-normal lg:text-right not-italic">
+				<p>18204 Sandhurst Ct, Edmond, Oklahoma 73012</p>
+				<p>(215) 514-3619</p>
+				<p>
+					<a href="mailto:bk7987@gmail.com" class="pl-1 pr-2 hyperlink">bk7987@gmail.com</a>
+				</p>
+				<p>
+					<a href="https://bkerr.dev" class="pl-1 pr-2 hyperlink">https://bkerr.dev</a>
+				</p>
+				<p>
+					<a href="https://github.com/bill-kerr" class="pl-1 pr-2 hyperlink">github.com/bill-kerr</a
+					>
+				</p>
+			</address>
+		</div>
+
+		<section class="mt-6">
+			<ResumeHeader>Technical Skills</ResumeHeader>
+			<div class="mt-4 md:space-x-2 flex flex-col md:flex-row justify-between">
+				<div>
+					<div
+						class="inline-block py-1.5 px-3 bg-blue-100 rounded-full text-sm text-blue-500 whitespace-nowrap leading-none"
+					>
+						Backend Technologies
+					</div>
+					<ul class="mt-1 space-y-1">
+						<ResumeItem>NodeJS, Django, GoFiber</ResumeItem>
+						<ResumeItem>REST API design/consumption</ResumeItem>
+						<ResumeItem>Docker, Kubernetes, Traefik, Nginx</ResumeItem>
+						<ResumeItem>NATS Streaming Server</ResumeItem>
+						<ResumeItem>PostgreSQL, MySQL, MongoDB</ResumeItem>
+					</ul>
+				</div>
+				<div>
+					<div
+						class="inline-block mt-3 md:mt-0 py-1.5 px-3 bg-blue-100 rounded-full text-sm text-blue-500 whitespace-nowrap leading-none"
+					>
+						Frontend Frameworks/Tools
+					</div>
+					<ul class="mt-1 space-y-1">
+						<ResumeItem>React, Svelte, AlpineJS</ResumeItem>
+						<ResumeItem>Redux, Formik, TailwindCSS</ResumeItem>
+					</ul>
+					<div
+						class="mt-3 inline-block py-1.5 px-3 bg-blue-100 rounded-full text-sm text-blue-500 whitespace-nowrap leading-none"
+					>
+						Web Services
+					</div>
+					<ul class="mt-1 space-y-1">
+						<ResumeItem>AWS, Heroku, DigitalOcean</ResumeItem>
+						<ResumeItem>Netlify, Firebase, Cloudinary</ResumeItem>
+					</ul>
+				</div>
+				<div>
+					<div
+						class="inline-block mt-3 md:mt-0 py-1.5 px-3 bg-blue-100 rounded-full text-sm text-blue-500 whitespace-nowrap leading-none"
+					>
+						Languages/Source Control/CI
+					</div>
+					<ul class="mt-1 space-y-1">
+						<ResumeItem>TypeScript/JavaScript</ResumeItem>
+						<ResumeItem>Python</ResumeItem>
+						<ResumeItem>Go</ResumeItem>
+						<ResumeItem>HTML, CSS</ResumeItem>
+						<ResumeItem>Git, Bash, TravisCI</ResumeItem>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="mt-6">
+			<ResumeHeader>Education</ResumeHeader>
+			<div class="mt-4 flex justify-between">
+				<div class="flex md:items-center">
+					<a href="https://drexel.edu" class="mt-1 md:mt-0 flex-shrink-0 self-start">
+						<img src="/img/drexel-logo.png" alt="Drexel University" class="w-14" />
+					</a>
+					<div class="ml-4">
+						<p class="text-lg font-bold">Drexel University</p>
+						<p class="text-gray-600 text-sm leading-tight">
+							<span class="sm:hidden">B.S.&nbsp;</span><span class="hidden sm:inline-block"
+								>Bachelor of Science&nbsp;</span
+							>in Civil Engineering<span class="hidden md:inline-block"
+								>&nbsp;● 3.7 GPA (Magna Cum Laude)</span
+							>
+						</p>
+						<div class="md:hidden leading-tight">
+							<p class="text-gray-600 text-sm">3.7 GPA (Magna Cum Laude)</p>
+							<p class="mt-2">Philadelphia, PA</p>
+							<p class="text-gray-600 text-sm">June 2017</p>
+						</div>
+					</div>
+				</div>
+				<div class="hidden md:block text-right">
+					<p>Philadelphia, PA</p>
+					<p class="text-gray-600 text-sm">June 2017</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="mt-6">
+			<ResumeHeader>Work Experience</ResumeHeader>
+			<div class="mt-4 flex justify-between">
+				<div class="flex">
+					<a href="https://jjaconstruction.com" class="mt-1 w-14 flex-shrink-0 self-start">
+						<img
+							src="/img/jja-logo.svg"
+							alt="James J. Anderson Construction Co., Inc."
+							class="mx-auto h-10"
+						/>
+					</a>
+					<div class="ml-4">
+						<p class="text-lg font-bold leading-tight">James J. Anderson Construction Co., Inc.</p>
+						<p class="text-gray-600 text-sm">Project Engineer</p>
+						<div class="md:hidden leading-tight">
+							<p class="mt-2">Philadelphia, PA</p>
+							<p class="text-gray-600 text-sm">June 2017 - Present</p>
+						</div>
+					</div>
+				</div>
+				<div class="hidden md:block text-right">
+					<p>Philadelphia, PA</p>
+					<p class="text-gray-600 text-sm">June 2017 - Present</p>
+				</div>
+			</div>
+			<ul class="mt-3 space-y-1">
+				<ResumeItem>
+					Design, develop, and deploy custom software solutions to streamline existing processes and
+					improve accessibility of project data.
+				</ResumeItem>
+				<ResumeItem>
+					Implement and troubleshoot 3D machine control technology for grading and paving
+					operations.
+				</ResumeItem>
+				<ResumeItem>
+					Collaborate with project team members to plan, schedule, and execute project objectives.
+				</ResumeItem>
+				<ResumeItem>
+					Generate extensive job cost analyses, including projections of future work and
+					cost-to-date breakdowns.
+				</ResumeItem>
+				<ResumeItem>
+					Developed & deployed company website using HUGO, TailwindCSS, AlpineJS, and Netlify.
+				</ResumeItem>
+			</ul>
+		</section>
+
+		<section class="mt-6">
+			<ResumeHeader>Project Experience</ResumeHeader>
+			<div class="mt-4 flex justify-between md:justify-start items-end">
+				<h3 class="text-lg font-bold leading-none">Force Account Generator</h3>
+				<a
+					href="https://force-account-generator.herokuapp.com"
+					class="pl-1 pr-2 mt-1 md:mt-0 md:ml-6 self-start inline-flex items-center leading-none hyperlink"
+				>
+					<IconLink class="h-4 w-4" />
+					<span class="hidden md:inline-block ml-1"
+						>https://force-account-generator.herokuapp.com</span
+					>
+					<span class="md:hidden ml-1">Visit</span>
+				</a>
+			</div>
+			<ul class="mt-2 space-y-1">
+				<ResumeItem>
+					Designed and deployed a web application that reads in Excel data and serves a generated
+					PDF form.
+				</ResumeItem>
+				<ResumeItem>
+					Built full stack application with Django, utilizing asynchronous tasks, S3 storage, and a
+					reactive frontend.
+				</ResumeItem>
+				<ResumeItem>
+					Reduced workload by automating the form-filling process, eliminating hundreds of hours of
+					data entry.
+				</ResumeItem>
+			</ul>
+			<div class="mt-4 flex justify-between md:justify-start items-end">
+				<h3 class="text-lg font-bold leading-none">Ticket Crawler</h3>
+				<a
+					href="https://github.com/bill-kerr/ticket-crawler"
+					class="pl-1 pr-2 mt-1 md:mt-0 md:ml-6 self-start inline-flex items-center leading-none hyperlink"
+				>
+					<IconLink class="h-4 w-4" />
+					<span class="hidden md:inline-block ml-1"
+						>https://github.com/bill-kerr/ticket-crawler</span
+					>
+					<span class="md:hidden ml-1">Visit</span>
+				</a>
+			</div>
+			<ul class="mt-2 space-y-1">
+				<ResumeItem>
+					Built Dockerized application that automatically scrapes material ticketing service
+					website, assembles PDFs based on material type, stores data in a PostgreSQL database, and
+					emails PDFs to recipients.
+				</ResumeItem>
+			</ul>
+			<div class="mt-4 flex justify-between md:justify-start items-end">
+				<h3 class="text-lg font-bold leading-none">Complete Tabs</h3>
+				<a
+					href="https://github.com/bill-kerr/complete-tabs"
+					class="pl-1 pr-2 mt-1 md:mt-0 md:ml-6 self-start inline-flex items-center leading-none hyperlink"
+				>
+					<IconLink class="h-4 w-4" />
+					<span class="hidden md:inline-block ml-1">https://github.com/bill-kerr/complete-tabs</span
+					>
+					<span class="md:hidden ml-1">Visit</span>
+				</a>
+			</div>
+			<ul class="mt-2 space-y-1">
+				<ResumeItem>
+					Designed a Python application that reads PDF contract drawings and extracts information to
+					a sortable and filterable Excel spreadsheet for simplified jobsite data consumption.
+				</ResumeItem>
+				<ResumeItem>
+					Created a fully-featured API (NodeJS/Typescript) for all CRUD operations relating to job
+					contract data.
+				</ResumeItem>
+			</ul>
+			<div class="mt-4 flex justify-between md:justify-start items-end">
+				<h3 class="text-lg font-bold leading-none">Timecards</h3>
+				<a
+					href="https://github.com/bill-kerr/timecards"
+					class="pl-1 pr-2 mt-1 md:mt-0 md:ml-6 self-start inline-flex items-center leading-none hyperlink"
+				>
+					<IconLink class="h-4 w-4" />
+					<span class="hidden md:inline-block ml-1">https://github.com/bill-kerr/timecards</span>
+					<span class="md:hidden ml-1">Visit</span>
+				</a>
+			</div>
+			<ul class="mt-2 space-y-1">
+				<ResumeItem>
+					Developing web application that aggregates company timecard data to an accessible,
+					centralized location for simplified review and analysis.
+				</ResumeItem>
+				<ResumeItem>
+					Designed backend server API, written in Go, that continuously retrieves and stores data
+					from a 3rd party API and exposes the data for client-side consumption.
+				</ResumeItem>
+				<ResumeItem>
+					Creating React/Typescript frontend utilizing Redux state management and continuous polling
+					of API for realtime data updates.
+				</ResumeItem>
+			</ul>
+			<div class="mt-4 flex items-end">
+				<h3 class="text-lg font-bold leading-none">BlackBat Project</h3>
+			</div>
+			<ul class="mt-2 space-y-1">
+				<ResumeItem>
+					Contributed as part of a multi-disciplinary team to design and deploy a weather-resistant,
+					drone-mounted data collection system (Java) for Aramasuisse (Switzerland Office for
+					Defence Procurement).
+				</ResumeItem>
+			</ul>
+		</section>
+	</div>
+</Layout>

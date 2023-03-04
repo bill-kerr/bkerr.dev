@@ -1,12 +1,15 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
-import svelte from '@astrojs/svelte';
+import alpinejs from "@astrojs/alpinejs";
+
+// https://astro.build/config
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), svelte()],
+	integrations: [tailwind(), alpinejs(), mdx()],
 });

@@ -1,7 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "~/layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro">
-	test
+<Layout title={null}>
+	<div class="pb-12 h-full flex items-center flex-grow">
+		<div>
+			<h1 class="mt-1 text-5xl md:text-7xl font-black">
+				I build technology-driven
+				<span class="pl-3 pr-6 shadow-blue-100 text-blue-800">solutions</span>
+			</h1>
+			<div class="mt-12 sm:mt-6 flex flex-col sm:flex-row text-center">
+				<a
+					href="/projects"
+					class="px-5 py-3 text-lg text-white font-bold bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg shadow max-w-xs"
+					>View My Projects</a
+				>
+				<a
+					href="/about"
+					class="mt-4 sm:mt-0 sm:ml-4 px-5 py-3 text-lg text-gray-600 bg-gray-50 hover:bg-gray-100 transition-colors font-bold rounded-lg shadow max-w-xs"
+					>About Me</a
+				>
+			</div>
+		</div>
+	</div>
 </Layout>

@@ -1,13 +1,19 @@
 ---
-import BlockPattern from '../components/BlockPattern.astro';
-import SideBar from '../components/SideBar.astro';
+import Nav from "~/components/Nav.astro";
+import SideBar from "~/components/SideBar.astro";
+import { getCurrentPage } from "~/utils/page";
 
 export interface Props {
-	title: string;
-	hideSidebar?: boolean;
+	title: string | null;
 }
 
-const { title, hideSidebar = false } = Astro.props;
+const { title } = Astro.props;
+
+const commonTitle = "Bill Kerr - Software Developer";
+const fullTitle = title ? `${title} | ${commonTitle}` : commonTitle;
+
+const currentPage = getCurrentPage(Astro.url);
+const mainClass = currentPage === "home" ? "" : "pb-64";
 ---
 
 <!DOCTYPE html>
@@ -17,49 +23,158 @@ const { title, hideSidebar = false } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{fullTitle}</title>
 	</head>
 	<body class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen">
-		<BlockPattern />
+		<div class="relative hidden lg:block" role="presentation" aria-hidden="true">
+			<div class="absolute top-2 right-2">
+				<img src="/img/square-pattern.svg" alt="pattern" class="h-56 transform rotate-90" />
+			</div>
+		</div>
+
 		<div class="relative max-w-screen-lg mx-auto p-6 flex flex-col lg:flex-row min-h-screen">
-			{!hideSidebar ? <SideBar /> : null}
-			<main>
-				<slot />
-			</main>
+			<SideBar />
+			<div class="lg:ml-12 w-full flex flex-col flex-1">
+				<Nav />
+				<main class={`flex flex-col flex-grow mt-12 ${mainClass}`}>
+					<slot />
+				</main>
+			</div>
 		</div>
 	</body>
 </html>
 
-<style>
+<style is:global>
 	@font-face {
-		font-family: 'Nunito Sans';
-		src: url('/fonts/NunitoSans-Regular.ttf');
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Regular.ttf");
 		font-weight: 400;
 		font-style: normal;
 		font-display: swap;
 	}
 
 	@font-face {
-		font-family: 'Nunito Sans';
-		src: url('/fonts/NunitoSans-Bold.ttf');
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Bold.ttf");
 		font-weight: 700;
 		font-style: normal;
 		font-display: swap;
 	}
 
 	@font-face {
-		font-family: 'Nunito Sans';
-		src: url('/fonts/NunitoSans-Black.ttf');
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Black.ttf");
 		font-weight: 900;
 		font-style: normal;
 		font-display: swap;
 	}
 
 	@font-face {
-		font-family: 'Source Code Pro';
-		src: url('/fonts/SourceCodePro-VariableFont_wght.ttf');
+		font-family: "Source Code Pro";
+		src: url("/fonts/SourceCodePro-VariableFont_wght.ttf");
 		font-weight: 100 900;
 		font-style: normal;
 		font-display: swap;
+	}
+
+	.form-field {
+		@apply border border-gray-300 rounded p-3 bg-gray-50 focus:outline-none focus:ring focus:border-blue-400 focus:bg-white transition-colors;
+	}
+
+	.hyperlink {
+		@apply shadow-blue-100 hover:shadow-blue-200 transition-colors;
+	}
+
+	[x-cloak] {
+		display: none;
+	}
+
+	.markdown {
+		@apply text-gray-700 max-w-70ch;
+	}
+
+	.markdown a {
+		@apply shadow-blue-100 hover:shadow-blue-200 text-blue-900;
+	}
+
+	.markdown h1,
+	.markdown h2,
+	.markdown h3,
+	.markdown h4,
+	.markdown h5,
+	.markdown h6 {
+		@apply mt-8 mb-3 font-black;
+	}
+
+	.markdown p {
+		@apply my-3 leading-relaxed;
+	}
+
+	.markdown h1 {
+		@apply text-4xl;
+	}
+
+	.markdown h2 {
+		@apply text-3xl;
+	}
+
+	.markdown h3 {
+		@apply text-2xl;
+	}
+
+	.markdown h4 {
+		@apply text-xl;
+	}
+
+	.markdown h5 {
+		@apply text-lg;
+	}
+
+	.markdown h6 {
+		@apply text-base;
+	}
+
+	.markdown table {
+		@apply my-3 border border-gray-300;
+	}
+
+	.markdown thead {
+		@apply border-b border-gray-300 bg-white;
+	}
+
+	.markdown tr {
+		@apply border-t border-b border-gray-300;
+	}
+
+	.markdown tr:nth-child(even) {
+		@apply bg-white;
+	}
+
+	.markdown td {
+		@apply border-r border-l border-gray-300;
+	}
+
+	.markdown th {
+		@apply p-2 border-r border-l border-gray-300;
+	}
+
+	.markdown td {
+		@apply p-2;
+	}
+
+	.markdown pre {
+		@apply my-3 p-2 rounded-lg text-sm bg-gray-800 text-white font-mono overflow-x-auto;
+	}
+
+	.markdown p > code {
+		@apply px-1 py-0.5 rounded text-sm bg-gray-200 font-mono;
+	}
+
+	.markdown ul {
+		@apply ml-6 list-disc list-outside;
+	}
+
+	.markdown img {
+		@apply my-6;
 	}
 </style>

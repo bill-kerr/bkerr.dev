@@ -1,0 +1,87 @@
+---
+import IconGithub from "~/components/icons/IconGithub.astro";
+import IconLinkedIn from "~/components/icons/IconLinkedIn.astro";
+import IconMail from "~/components/icons/IconMail.astro";
+import IconPhone from "~/components/icons/IconPhone.astro";
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Contact">
+	<h1 class="text-2xl font-black text-gray-700">Contact Me</h1>
+	<p class="mt-1 text-gray-600 leading-tight">
+		Feel free to contact me via any one of the methods below. Use the form to send me an email!
+	</p>
+	<ul class="mt-6 space-y-6">
+		<li class="px-2 flex items-center">
+			<IconMail class="w-6 h-6 flex-shrink-0 text-gray-600" />
+			<a href="mailto:bk7987@gmail.com" class="ml-4 pl-1 pr-2 hyperlink">bk7987@gmail.com</a>
+		</li>
+		<li class="px-2 flex items-center">
+			<IconPhone class="w-6 h-6 flex-shrink-0 text-gray-600" />
+			<span class="ml-4">(215) 514-3619</span>
+		</li>
+		<li class="px-2 flex items-center">
+			<IconGithub class="h-6 w-6 flex-shrink-0 text-github" />
+			<a href="https://github.com/bill-kerr" class="ml-4 pl-1 pr-2 hyperlink"
+				>https://github.com/bill-kerr</a
+			>
+		</li>
+		<li class="px-2 flex items-center">
+			<IconLinkedIn class="h-6 w-6 flex-shrink-0 text-linkedin" />
+			<a
+				href="https://www.linkedin.com/in/william-kerr-32394473/"
+				class="ml-4 pl-1 pr-2 hidden sm:inline-block hyperlink"
+				>https://www.linkedin.com/in/william-kerr-32394473/</a
+			>
+			<a
+				href="https://www.linkedin.com/in/william-kerr-32394473/"
+				class="ml-4 pl-1 pr-2 sm:hidden hyperlink">My LinkedIn</a
+			>
+		</li>
+	</ul>
+	<form
+		class="mt-12"
+		method="POST"
+		data-netlify="true"
+		netlify-honeypot="secret-field"
+		name="contact"
+		action="/contact"
+	>
+		<div class="p-6 rounded-lg shadow text-gray-700 bg-white">
+			<h2 class="text-2xl font-black">Send Me a Message</h2>
+			<div class="hidden">
+				<label for="secret-field">fill this out</label>
+				<input type="text" name="secret-field" />
+			</div>
+			<div class="mt-4 flex flex-col md:flex-row md:items-center">
+				<div class="md:w-1/2">
+					<label for="name" class="block text-sm text-gray-600 font-bold">Name</label>
+					<input type="text" name="name" id="name" class="w-full form-field" autocomplete="name" />
+				</div>
+				<div class="mt-2 md:mt-0 md:ml-4 md:w-1/2">
+					<label for="email" class="block text-sm text-gray-600 font-bold">Email</label>
+					<input
+						type="text"
+						name="email"
+						id="email"
+						class="w-full form-field"
+						autocomplete="email"
+					/>
+				</div>
+			</div>
+			<div class="mt-2">
+				<label for="message" class="text-sm text-gray-600 font-bold">Message</label>
+				<textarea rows="8" cols="80" name="message" id="message" class="w-full form-field"
+				></textarea>
+			</div>
+			<div class="mt-4 flex justify-end">
+				<button
+					type="submit"
+					class="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg transition-colors hover:bg-blue-600 focus:ring focus:outline-none shadow"
+				>
+					Submit
+				</button>
+			</div>
+		</div>
+	</form>
+</Layout>

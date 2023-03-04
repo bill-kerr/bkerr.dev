@@ -1,0 +1,19 @@
+---
+import type { favoriteThings } from "~/utils/favorite-things";
+import IconHashtag from "./icons/IconHashtag.astro";
+
+type Props = Pick<(typeof favoriteThings)[number], "linkClass" | "category" | "name">;
+
+const { category, name, linkClass } = Astro.props;
+---
+
+<a
+	href={`#${category}`}
+	class:list={[
+		"relative flex items-center inset-0 px-3 py-0.5 rounded-full transition-colors border-2",
+		linkClass,
+	]}
+>
+	<IconHashtag class="-ml-0.5 h-4 w-4" />
+	<span>{name}</span>
+</a>

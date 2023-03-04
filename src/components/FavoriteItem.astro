@@ -1,0 +1,29 @@
+---
+import type { favoriteThings } from "~/utils/favorite-things";
+
+type Props = Pick<
+	(typeof favoriteThings)[number],
+	"things" | "category" | "name" | "bgClass" | "textClass"
+>;
+
+const { things, category, name, bgClass, textClass } = Astro.props;
+---
+
+<div class="mt-8 flex items-center" id={category}>
+	<span class:list={["h-3 w-3", bgClass]}></span>
+	<h3 class:list={["ml-2 uppercase tracking-wide font-bold text-sm leading-none", textClass]}>
+		{name}
+	</h3>
+</div>
+<ul class="mt-3 space-y-3">
+	{
+		things.map(({ url, title, description }) => (
+			<li>
+				<a href={url} class="pl-1 pr-2 font-black text-lg hyperlink">
+					{title}
+				</a>
+				<p class="text-gray-600 leading-tight">{description}</p>
+			</li>
+		))
+	}
+</ul>

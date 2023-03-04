@@ -1,0 +1,33 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import IconArrowLeft from "~/components/icons/IconArrowLeft.astro";
+import Layout from "~/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection("blog");
+
+	return blogEntries.map((entry) => {
+		return { params: { slug: entry.slug }, props: { entry } };
+	});
+}
+
+type Props = {
+	entry: CollectionEntry<"blog">;
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+	<div>
+		<a
+			href="/blog"
+			class="pl-1 pr-2 inline-flex items-center hyperlink text-gray-600 hover:text-gray-700"
+		>
+			<IconArrowLeft class="h-5 w-5" />
+			<span class="ml-2 font-black text-sm">Back to the blog listing</span>
+		</a>
+	</div>
+	<article class="mt-4 markdown"><Content /></article>
+</Layout>

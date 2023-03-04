@@ -1,33 +1,89 @@
 ---
-import IconGithub from './icons/IconGithub.astro';
-import IconLinkedIn from './icons/IconLinkedIn.astro';
-import IconMenu from './icons/IconMenu.astro';
-import MobileNav from './MobileNav.svelte';
+import { getCurrentPage, Page } from "~/utils/page";
+import IconGithub from "~/components/icons/IconGithub.astro";
+import IconLinkedIn from "~/components/icons/IconLinkedIn.astro";
+import IconMenu from "~/components/icons/IconMenu.astro";
+import IconX from "~/components/icons/IconX.astro";
+
+const page = getCurrentPage(Astro.url);
+
+const baseClasses = "ml-2 pl-2 pr-4 self-start text-xl font-black transition-colors";
+const active = `${baseClasses} text-gray-900 shadow-blue-200 hover:shadow-blue-200`;
+const inactive = `${baseClasses} hover:text-gray-800 hover:shadow-blue-100`;
+
+function getLinkClass(linkPage: Page): string {
+	return page === linkPage ? active : inactive;
+}
 ---
 
-<div class="flex items-start justify-between lg:block lg:w-52">
-  <div class="flex items-center lg:flex-col">
-    <a href="/" class="block flex-shrink-0 w-12 lg:w-32 group">
-      <img
-        src="/img/profile-photo.jpg"
-        alt="Bill Kerr"
-        class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
-      />
-    </a>
-    <div class="ml-4 lg:ml-0 lg:mt-4 flex flex-col leading-none">
-      <span class="font-black text-2xl">Bill Kerr</span>
-      <span class="text-gray-600">Software Developer</span>
-      <div class="hidden mt-2 lg:flex items-center">
-        <a href="https://github.com/bill-kerr">
-          <IconGithub class="h-6 w-6 text-gray-400 hover:text-github transition-colors" />
-        </a>
-        <a href="https://www.linkedin.com/in/william-kerr-32394473/" class="ml-3">
-          <IconLinkedIn class="h-6 w-6 text-gray-400 hover:text-linkedin transition-colors" />
-        </a>
-      </div>
-    </div>
-  </div>
-  <MobileNav client:load>
-    <IconMenu class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
-  </MobileNav>
+<div
+	class={`flex items-start justify-between lg:block lg:w-52 ${page === "home" ? "lg:hidden" : ""}`}
+	x-data="{menuOpen: false}"
+>
+	<div class="flex items-center lg:flex-col">
+		<a href="/" class="block flex-shrink-0 w-12 lg:w-32 group">
+			<img
+				src="/img/profile-photo.jpg"
+				alt="Bill Kerr"
+				class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
+			/>
+		</a>
+		<div class="ml-4 lg:ml-0 lg:mt-4 flex flex-col leading-none">
+			<span class="font-black text-2xl">Bill Kerr</span>
+			<span class="text-gray-600">Software Developer</span>
+			<div class="hidden mt-2 lg:flex items-center">
+				<a href="https://github.com/bill-kerr">
+					<IconGithub class="h-6 w-6 text-gray-400 hover:text-github transition-colors" />
+				</a>
+				<a href="https://www.linkedin.com/in/william-kerr-32394473/" class="ml-3">
+					<IconLinkedIn class="h-6 w-6 text-gray-400 hover:text-linkedin transition-colors" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<button class="p-1 lg:hidden group rounded" x-on:click="menuOpen = !menuOpen" x-show="!menuOpen">
+		<IconMenu class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
+	</button>
+	<div class="p-6 fixed inset-0 bg-gray-50 z-50" x-show="menuOpen">
+		<div class="flex items-start justify-between">
+			<div class="flex items-center">
+				<a href="/" class="block flex-shrink-0 w-12 group">
+					<img
+						src="/img/profile-photo.jpg"
+						alt="Bill Kerr"
+						class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
+					/>
+				</a>
+				<div class="ml-4 flex flex-col leading-none">
+					<span class="font-black text-2xl">Bill Kerr</span>
+					<span class="text-gray-600">Software Developer</span>
+				</div>
+			</div>
+			<button class="p-1 group rounded" x-on:click="menuOpen = !menuOpen">
+				<IconX class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
+			</button>
+		</div>
+		<nav class="mt-12 flex flex-col space-y-4 text-gray-700">
+			<a href="/about" class={getLinkClass("about")}>About Me</a>
+			<a href="/blog" class={getLinkClass("blog")}>Blog</a>
+			<a href="/projects" class={getLinkClass("projects")}>Projects</a>
+			<a href="/resume" class={getLinkClass("resume")}>Resume</a>
+			<a href="/contact" class={getLinkClass("contact")}>Contact</a>
+		</nav>
+		<div class="ml-4 mt-12 flex items-center">
+			<a href="https://github.com/bill-kerr" aria-label="Link to my Github profile">
+				<IconGithub class="h-8 w-8 text-gray-400 hover:text-github transition-colors" />
+			</a>
+			<a
+				href="https://www.linkedin.com/in/william-kerr-32394473/"
+				class="ml-4"
+				aria-label="Link to my LinkedIn profile"
+			>
+				<IconLinkedIn class="h-8 w-8 text-gray-400 hover:text-linkedin transition-colors" />
+			</a>
+		</div>
+		<div class="absolute bottom-2 right-2">
+			<img src="/img/square-pattern.svg" alt="pattern" class="h-56 transform rotate-180" />
+		</div>
+	</div>
 </div>
