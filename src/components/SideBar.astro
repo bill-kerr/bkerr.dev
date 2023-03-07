@@ -44,7 +44,7 @@ function getLinkClass(linkPage: Page): string {
 	<button class="p-1 lg:hidden group rounded" x-on:click="menuOpen = !menuOpen" x-show="!menuOpen">
 		<IconMenu class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
 	</button>
-	<div class="p-6 fixed inset-0 bg-gray-50 z-50" x-show="menuOpen">
+	<div class="p-6 fixed inset-0 bg-gray-50 z-50" x-show="menuOpen" x-cloak>
 		<div class="flex items-start justify-between">
 			<div class="flex items-center">
 				<a href="/" class="block flex-shrink-0 w-12 group">
