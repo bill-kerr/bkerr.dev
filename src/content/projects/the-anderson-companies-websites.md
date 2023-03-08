@@ -1,6 +1,6 @@
 ---
 description: Designed and deployed four websites for the Anderson Companies.
-previewImg: /img/jja-construction-preview.png
+previewImg: /img/jja-construction-preview.webp
 tags:
   - Hugo
   - TailwindCSS

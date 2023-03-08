@@ -1,7 +1,7 @@
 ---
 description: FleetWatcher material ticket aggregator and automated messenger.
 github: https://github.com/bill-kerr/ticket-crawler
-previewImg: /img/tickets-preview.png
+previewImg: /img/tickets-preview.webp
 tags:
   - TypeScript
   - Express

@@ -2,7 +2,7 @@
 title: Complete Tabs
 github: https://github.com/bk7987/complete-tabs
 description: Construction project data API and dashboard client.
-previewImg: /img/tabs-screenshot.png
+previewImg: /img/tabs-screenshot.webp
 tags:
   - TypeScript
   - Express

@@ -1,7 +1,7 @@
 ---
 description: Simple Firebase authentication client for testing APIs and more.
 github: https://github.com/bill-kerr/firebase-auth-client
-previewImg: /img/firebase-auth-client-preview.png
+previewImg: /img/firebase-auth-client-preview.webp
 tags:
   - Firebase
   - Svelte

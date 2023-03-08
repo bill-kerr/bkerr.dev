@@ -1,7 +1,7 @@
 ---
 description: Realtime timecard status updates for HCSS HeavyJob.
 github: https://github.com/bill-kerr/timecards
-previewImg: /img/timecards-preview.png
+previewImg: /img/timecards-preview.webp
 tags:
   - Go
   - Gorm

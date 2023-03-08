@@ -15,7 +15,7 @@ The data provided by tab sheets is granular and rich with information that is la
 
 A tab sheet can take many forms, but in my case, it is a table that is split into many columns representing items of work and the rows representing a range of locations. The content of the cells is the quantity of the item of work at that location. There are not enough columns to fit all of the items of work, so the rows are repeated on many pages so that all the applicable columns can be shown.
 
-![](/img/tab-sheet-anatomy.png)
+![](/img/tab-sheet-anatomy.webp)
 
 The diagram above shows the basic layout of a tab sheet. Each row may have some additional data, further clarifying the location of the work. The street headings also delimit the locations, but further complicate the structure of the table. Given any row, it can be difficult to find the street heading, as it may not even be on the same page.
 
