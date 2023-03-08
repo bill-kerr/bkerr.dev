@@ -18,7 +18,7 @@ export const favoriteThings = [
 		category: "technologies",
 		name: "Technologies",
 		bgClass: "bg-blue-500",
-		textClass: "text-blue-500",
+		textClass: "text-blue-600",
 		linkClass: "text-blue-900 border-blue-500 bg-blue-100 hover:bg-blue-200",
 		things: [
 			{
@@ -59,7 +59,7 @@ export const favoriteThings = [
 		category: "developers",
 		name: "Developers",
 		bgClass: "bg-yellow-500",
-		textClass: "text-yellow-500",
+		textClass: "text-yellow-700",
 		linkClass: "text-yellow-900 border-yellow-500 bg-yellow-100 hover:bg-yellow-200",
 		things: [
 			{
@@ -84,7 +84,7 @@ export const favoriteThings = [
 		category: "cooking",
 		name: "Cooking",
 		bgClass: "bg-red-500",
-		textClass: "text-red-500",
+		textClass: "text-red-600",
 		linkClass: "text-red-900 border-red-500 bg-red-100 hover:bg-red-200",
 		things: [
 			{
@@ -104,7 +104,7 @@ export const favoriteThings = [
 		category: "podcasts",
 		name: "Podcasts",
 		bgClass: "bg-green-500",
-		textClass: "text-green-500",
+		textClass: "text-green-700",
 		linkClass: "text-green-900 border-green-500 bg-green-100 hover:bg-green-200",
 		things: [
 			{

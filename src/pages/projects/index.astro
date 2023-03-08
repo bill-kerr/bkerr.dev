@@ -8,6 +8,7 @@ const collection = await getCollection("projects");
 ---
 
 <Layout title="Projects">
+	<h1 class="text-3xl font-black">My Projects</h1>
 	<div class="mt-10 space-y-20">
 		{
 			collection
@@ -30,7 +31,7 @@ const collection = await getCollection("projects");
 										href={`/projects/${slug}`}
 										class="pl-1 pr-2 inline-block text-lg font-black hyperlink"
 									>
-										{title}
+										<h2>{title}</h2>
 									</a>
 									<p class="mt-1 text-gray-600 leading-snug">{description}</p>
 								</div>
@@ -65,7 +66,7 @@ const collection = await getCollection("projects");
 						{tags && tags.length > 0 ? (
 							<div class="mt-3 sm:mt-6 flex flex-wrap text-sm">
 								{tags.map((tag) => (
-									<span class="mr-2 my-1 py-1 px-2 rounded-full bg-gray-200 text-gray-500">
+									<span class="mr-2 my-1 py-1 px-2 rounded-full bg-gray-200 text-gray-600">
 										{tag}
 									</span>
 								))}

@@ -24,9 +24,12 @@ function getLinkClass(linkPage: Page): string {
 		<a href="/" class="block flex-shrink-0 w-12 lg:w-32 group">
 			<img
 				src="/img/profile-photo.jpg"
-				alt="Bill Kerr"
 				class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
+				height="48px"
+				width="48px"
+				alt=""
 			/>
+			<span class="sr-only">Go home</span>
 		</a>
 		<div class="ml-4 lg:ml-0 lg:mt-4 flex flex-col leading-none">
 			<span class="font-black text-2xl">Bill Kerr</span>
@@ -34,15 +37,23 @@ function getLinkClass(linkPage: Page): string {
 			<div class="hidden mt-2 lg:flex items-center">
 				<a href="https://github.com/bill-kerr">
 					<IconGithub class="h-6 w-6 text-gray-400 hover:text-github transition-colors" />
+					<span class="sr-only">Github</span>
 				</a>
 				<a href="https://www.linkedin.com/in/william-kerr-32394473/" class="ml-3">
 					<IconLinkedIn class="h-6 w-6 text-gray-400 hover:text-linkedin transition-colors" />
+					<span class="sr-only">LinkedIn</span>
 				</a>
 			</div>
 		</div>
 	</div>
-	<button class="p-1 lg:hidden group rounded" x-on:click="menuOpen = !menuOpen" x-show="!menuOpen">
+	<button
+		class="p-1 lg:hidden group rounded"
+		x-on:click="menuOpen = !menuOpen"
+		x-show="!menuOpen"
+		aria-label="open menu"
+	>
 		<IconMenu class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
+		<span class="sr-only">open menu</span>
 	</button>
 	<div class="p-6 fixed inset-0 bg-gray-50 z-50" x-show="menuOpen" x-cloak>
 		<div class="flex items-start justify-between">
@@ -52,6 +63,8 @@ function getLinkClass(linkPage: Page): string {
 						src="/img/profile-photo.jpg"
 						alt="Bill Kerr"
 						class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
+						height="48px"
+						width="48px"
 					/>
 				</a>
 				<div class="ml-4 flex flex-col leading-none">
@@ -59,8 +72,9 @@ function getLinkClass(linkPage: Page): string {
 					<span class="text-gray-600">Software Developer</span>
 				</div>
 			</div>
-			<button class="p-1 group rounded" x-on:click="menuOpen = !menuOpen">
+			<button class="p-1 group rounded" x-on:click="menuOpen = !menuOpen" aria-label="close menu">
 				<IconX class="h-7 w-7 text-gray-600 group-hover:text-gray-700 transition-colors" />
+				<span class="sr-only">close menu</span>
 			</button>
 		</div>
 		<nav class="mt-12 flex flex-col space-y-4 text-gray-700">
@@ -73,6 +87,7 @@ function getLinkClass(linkPage: Page): string {
 		<div class="ml-4 mt-12 flex items-center">
 			<a href="https://github.com/bill-kerr" aria-label="Link to my Github profile">
 				<IconGithub class="h-8 w-8 text-gray-400 hover:text-github transition-colors" />
+				<span class="sr-only">Github</span>
 			</a>
 			<a
 				href="https://www.linkedin.com/in/william-kerr-32394473/"
@@ -80,10 +95,17 @@ function getLinkClass(linkPage: Page): string {
 				aria-label="Link to my LinkedIn profile"
 			>
 				<IconLinkedIn class="h-8 w-8 text-gray-400 hover:text-linkedin transition-colors" />
+				<span class="sr-only">LinkedIn</span>
 			</a>
 		</div>
-		<div class="absolute bottom-2 right-2">
-			<img src="/img/square-pattern.svg" alt="pattern" class="h-56 transform rotate-180" />
+		<div class="absolute bottom-2 right-2" role="presentation">
+			<img
+				src="/img/square-pattern.svg"
+				alt="pattern"
+				class="transform rotate-180"
+				height="224px"
+				width="224px"
+			/>
 		</div>
 	</div>
 </div>
