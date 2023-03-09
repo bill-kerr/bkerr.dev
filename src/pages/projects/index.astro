@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import IconGithub from "~/components/icons/IconGithub.astro";
 import IconWeb from "~/components/icons/IconWeb.astro";
 import Layout from "~/layouts/Layout.astro";
-import { getImageMetadata } from "~/utils/get-image-metadata";
+import { getImageMetadata } from "~/utils/image";
 
 const collection = await getCollection("projects");
 
@@ -68,6 +68,7 @@ function getDimensionsForImage(src: string) {
 										>
 											<IconGithub class="h-5 w-5" />
 											<span class="ml-2 px-3 sm:px-0 hidden sm:block">Github</span>
+											<span class="sr-only sm:hidden">Github</span>
 										</a>
 									) : null}
 									{web ? (
@@ -77,6 +78,7 @@ function getDimensionsForImage(src: string) {
 										>
 											<IconWeb class="h-5 w-5" />
 											<span class="ml-2 hidden sm:block">Visit</span>
+											<span class="sr-only sm:hidden">Visit</span>
 										</a>
 									) : null}
 								</div>
