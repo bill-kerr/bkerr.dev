@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/alpinejs': ^0.1.3
   '@astrojs/image': ^0.16.0
   '@astrojs/mdx': ^0.17.2
+  '@astrojs/prefetch': ^0.2.0
   '@astrojs/tailwind': ^3.0.1
   '@types/alpinejs': ^3.7.1
   '@types/node': ^18.14.6
@@ -19,6 +20,7 @@ dependencies:
   '@astrojs/alpinejs': 0.1.3_apvd5ijf74qgyek4pdk2jhbin4
   '@astrojs/image': 0.16.0_astro@2.1.2+sharp@0.31.3
   '@astrojs/mdx': 0.17.2_astro@2.1.2
+  '@astrojs/prefetch': 0.2.0
   '@astrojs/tailwind': 3.0.1_5fkwwuzubt6borit3q7k7y2k74
   '@types/alpinejs': 3.7.1
   '@types/node': 18.14.6
@@ -175,6 +177,12 @@ packages:
       - astro
       - rollup
       - supports-color
+    dev: false
+
+  /@astrojs/prefetch/0.2.0:
+    resolution: {integrity: sha512-q68916tIId0tnRFphNL2OcORgoATnfVItaQAugz7wfIq4ghivNISG1scN86uAyF/md1N1YcKu6XPukT5f2lShQ==}
+    dependencies:
+      throttles: 1.0.1
     dev: false
 
   /@astrojs/prism/2.0.0:
@@ -3675,6 +3683,11 @@ packages:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.1
+    dev: false
+
+  /throttles/1.0.1:
+    resolution: {integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==}
+    engines: {node: '>=6'}
     dev: false
 
   /tiny-glob/0.2.9:

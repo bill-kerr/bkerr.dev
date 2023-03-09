@@ -21,7 +21,7 @@ function getLinkClass(linkPage: Page): string {
 	x-data="{menuOpen: false}"
 >
 	<div class="flex items-center lg:flex-col">
-		<a href="/" class="block flex-shrink-0 w-12 lg:w-32 group">
+		<a href="/" rel="prefetch" class="block flex-shrink-0 w-12 lg:w-32 group">
 			<img
 				src="/img/profile-photo.webp"
 				class="rounded-full ring-4 ring-gray-300 group-hover:ring-blue-200"
@@ -58,7 +58,7 @@ function getLinkClass(linkPage: Page): string {
 	<div class="p-6 fixed inset-0 bg-gray-50 z-50" x-show="menuOpen" x-cloak>
 		<div class="flex items-start justify-between">
 			<div class="flex items-center">
-				<a href="/" class="block flex-shrink-0 w-12 group">
+				<a href="/" rel="prefetch" class="block flex-shrink-0 w-12 group">
 					<img
 						src="/img/profile-photo.webp"
 						alt="Bill Kerr"
@@ -78,11 +78,11 @@ function getLinkClass(linkPage: Page): string {
 			</button>
 		</div>
 		<nav class="mt-12 flex flex-col space-y-4 text-gray-700">
-			<a href="/about" class={getLinkClass("about")}>About Me</a>
-			<a href="/blog" class={getLinkClass("blog")}>Blog</a>
-			<a href="/projects" class={getLinkClass("projects")}>Projects</a>
-			<a href="/resume" class={getLinkClass("resume")}>Resume</a>
-			<a href="/contact" class={getLinkClass("contact")}>Contact</a>
+			<a href="/about" rel="prefetch" class={getLinkClass("about")}>About Me</a>
+			<a href="/blog" rel="prefetch" class={getLinkClass("blog")}>Blog</a>
+			<a href="/projects" rel="prefetch" class={getLinkClass("projects")}>Projects</a>
+			<a href="/resume" rel="prefetch" class={getLinkClass("resume")}>Resume</a>
+			<a href="/contact" rel="prefetch" class={getLinkClass("contact")}>Contact</a>
 		</nav>
 		<div class="ml-4 mt-12 flex items-center">
 			<a href="https://github.com/bill-kerr" aria-label="Link to my Github profile">
