@@ -1,7 +1,7 @@
 ---
 date: 2021-01-08T00:00:00Z
 preview: It's important to provide consistent and informative validation errors to API consumers. Here's how I do it declaratively with class-validator and class-transformer.
-previewImg: /img/data-validation.jpg
+previewImg: /img/data-validation.webp
 title: Declarative Validation for Express APIs with Class-Validator and Class-Transformer"
 ---
 

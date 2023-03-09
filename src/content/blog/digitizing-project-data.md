@@ -2,7 +2,7 @@
 date: 2021-01-04T05:00:00Z
 title: Digitizing Project Data
 preview: Construction project data is often provided in unwieldy tab sheets. Here's how I transformed it into a valuable, easily consumable digital asset.
-previewImg: /img/digitize-project-data.jpg
+previewImg: /img/digitize-project-data.webp
 ---
 
 # **Digitizing Project Data**
