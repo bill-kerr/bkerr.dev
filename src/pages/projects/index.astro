@@ -3,8 +3,26 @@ import { getCollection } from "astro:content";
 import IconGithub from "~/components/icons/IconGithub.astro";
 import IconWeb from "~/components/icons/IconWeb.astro";
 import Layout from "~/layouts/Layout.astro";
+import { getImageMetadata } from "~/utils/get-image-metadata";
 
 const collection = await getCollection("projects");
+
+const imageMetadata = await Promise.all(
+	collection.map(({ data }) => getImageMetadata(data.previewImg)),
+).then((metadata) => Object.fromEntries(metadata.map((entry) => [entry.src, entry])));
+
+function getDimensionsForImage(src: string) {
+	const meta = imageMetadata[src];
+
+	if (!meta) {
+		throw new Error(`Metadata for ${src} do not exist.`);
+	}
+
+	return {
+		width: meta.width,
+		height: meta.height,
+	};
+}
 ---
 
 <Layout title="Projects">
@@ -22,6 +40,7 @@ const collection = await getCollection("projects");
 										src={previewImg}
 										alt={title}
 										class="shadow-lg transform -skew-y-1 -rotate-1 rounded-lg"
+										{...getDimensionsForImage(previewImg)}
 									/>
 								</a>
 							</div>

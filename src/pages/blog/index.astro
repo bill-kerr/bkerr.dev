@@ -1,8 +1,26 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
+import { getImageMetadata } from "~/utils/get-image-metadata";
 
 const collection = await getCollection("blog");
+
+const imageMetadata = await Promise.all(
+	collection.map(({ data }) => getImageMetadata(data.previewImg)),
+).then((metadata) => Object.fromEntries(metadata.map((entry) => [entry.src, entry])));
+
+function getDimensionsForImage(src: string) {
+	const meta = imageMetadata[src];
+
+	if (!meta) {
+		throw new Error(`Metadata for ${src} do not exist.`);
+	}
+
+	return {
+		width: meta.width,
+		height: meta.height,
+	};
+}
 ---
 
 <Layout title="Blog">
@@ -14,7 +32,12 @@ const collection = await getCollection("blog");
 				<div>
 					<div class="flex flex-col sm:flex-row">
 						<a href={`/blog/${slug}`} class="flex-shrink-0 sm:w-1/3 flex">
-							<img src={previewImg} alt={title} class="max-h-64 w-full rounded-lg object-cover" />
+							<img
+								src={previewImg}
+								alt={title}
+								class="max-h-64 w-full rounded-lg object-cover"
+								{...getDimensionsForImage(previewImg)}
+							/>
 						</a>
 						<div class="mt-4 sm:ml-6 sm:mt-0 flex flex-col justify-between">
 							<div>
