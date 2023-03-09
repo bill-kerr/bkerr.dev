@@ -13,7 +13,7 @@ function getDimensionsForImage(src: string) {
 	const meta = imageMetadata[src];
 
 	if (!meta) {
-		throw new Error(`Metadata for ${src} do not exist.`);
+		throw new Error(`Metadata for ${src} does not exist.`);
 	}
 
 	return {
@@ -48,7 +48,13 @@ function getDimensionsForImage(src: string) {
 							</div>
 							<div class="mt-6 flex items-center justify-between text-gray-600">
 								<a href="https://bkerr.dev" class="flex items-center">
-									<img src="/img/profile-photo.webp" alt="" class="h-8 w-8 rounded-lg" />
+									<img
+										src="/img/profile-photo.webp"
+										alt=""
+										class="h-8 w-8 rounded-lg"
+										height="32"
+										width="32"
+									/>
 									<span class="ml-3">Bill Kerr</span>
 								</a>
 								<p class="text-gray-500 text-xs uppercase tracking-wide">

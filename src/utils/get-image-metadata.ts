@@ -1,11 +1,11 @@
 import path from "node:path";
 import fs from "node:fs/promises";
-import sharp from "sharp";
+import sharp, { FormatEnum } from "sharp";
 
 type ImageMetadata = {
 	width: number;
 	height: number;
-	format: string;
+	format: keyof FormatEnum;
 	size: number;
 	src: string;
 };
@@ -13,9 +13,10 @@ type ImageMetadata = {
 export async function getImageMetadata(src: string): Promise<ImageMetadata> {
 	const imagePath = path.join(path.resolve("public"), src);
 
-	const { width, height, format } = await sharp(imagePath).metadata();
-
-	const size = await fs.readFile(imagePath).then((buffer) => new File([buffer], "image").size);
+	const [{ width, height, format }, size] = await Promise.all([
+		sharp(imagePath).metadata(),
+		fs.readFile(imagePath).then((buffer) => new File([buffer], "image").size),
+	]);
 
 	if (width === undefined || height === undefined) {
 		throw new Error(`Could not read width and/or height from ${imagePath}`);
