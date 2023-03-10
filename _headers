@@ -1,2 +1,2 @@
-*
-  Cache-Control: public, max-age=0, stale-while-revalidate=3600
+/*
+  Cache-Control: public, max-age=0, stale-while-revalidate=31536000
