@@ -1,2 +1,5 @@
 /*
   Cache-Control: public, max-age=0, stale-while-revalidate=31536000
+
+/fonts/*
+  Cache-Control: public, immutable
