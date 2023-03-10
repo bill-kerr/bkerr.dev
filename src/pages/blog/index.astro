@@ -31,7 +31,7 @@ function getDimensionsForImage(src: string) {
 			collection.map(({ data: { date, preview, previewImg, title, tags }, slug }) => (
 				<div>
 					<div class="flex flex-col sm:flex-row">
-						<a href={`/blog/${slug}`} rel="prefetch" class="flex-shrink-0 sm:w-1/3 flex">
+						<a href={`/blog/${slug}/`} rel="prefetch" class="flex-shrink-0 sm:w-1/3 flex">
 							<img
 								src={previewImg}
 								alt={title}
@@ -42,8 +42,7 @@ function getDimensionsForImage(src: string) {
 						<div class="mt-4 sm:ml-6 sm:mt-0 flex flex-col justify-between">
 							<div>
 								<a
-									href={`/blog/${slug}`}
-									rel="prefetch"
+									href={`/blog/${slug}/`}
 									class="inline-block text-3xl font-black leading-none"
 								>
 									<h2>{title}</h2>
@@ -51,7 +50,7 @@ function getDimensionsForImage(src: string) {
 								<p class="mt-2 text-gray-600 leading-snug text-lg">{preview}</p>
 							</div>
 							<div class="mt-6 flex items-center justify-between text-gray-600">
-								<a href="/" rel="prefetch" class="flex items-center">
+								<a href="/" class="flex items-center">
 									<img
 										src="/img/profile-photo.webp"
 										alt=""
