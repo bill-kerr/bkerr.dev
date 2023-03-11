@@ -17,9 +17,15 @@ type Props = {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const meta = [
+	{ property: 'og:title', content: entry.data.title },
+	{ property: 'og:description', content: entry.data.preview },
+	{ property: 'og:image', content: entry.data.previewImg },
+] as const;
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} meta={meta}>
 	<div>
 		<a
 			href="/blog"

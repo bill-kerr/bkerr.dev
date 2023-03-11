@@ -5,9 +5,12 @@ preview: As you click around this site, you may notice it's pretty fast. Here ar
 previewImg: /img/blazing-fast.webp
 ---
 
+
+<img src="/img/blazing-fast.webp" alt="A man on a bicycle going so fast the background is blurry" class="h-96 object-cover object-middle rounded-lg w-full" height="828" width="640" />
+
 # **Creating a Blazing Fast Site with Netlify and Astro**
 
-I recently converted my personal website (this website) from [HUGO](https://gohugo.io) to [Astro](https://astro.build). There were many reasons, but the main one was that the templating syntax in HUGO just wasn't very good. It's Go-based, has very little modern editor support, has no type help, and is just very unwieldy.
+I recently converted my personal website (this website) from [HUGO](https://gohugo.io) to [Astro](https://astro.build). There were many reasons, but the main one was that the templating syntax in HUGO just wasn't very good. Additionally, it has very little modern editor support, has no type help, and is just very unwieldy.
 
 The bones of the website stayed the same. I'm serving static HTML with a little [AlpineJS](https://alpinejs.dev) sprinkled on top so I can do things like open the mobile menu. Blog posts like these are written in markdown and then transpiled into HTML at build time. It's all deployed to [Netlify](https://netlify.com) just like before.
 
@@ -61,7 +64,7 @@ Similarly, when you visit the [projects](/projects) or [blog](/blog) pages, they
 
 ### **Image Loading**
 
-There are three steps I took to improving image loading speed.
+There are three steps I took to improve image loading speed.
 
 - I converted all images to `.webp` or `.svg`. These formats have smaller file sizes than `.jpg` or `.png`.
 - I set explicit widths and heights on `<img>` tags. This allows the browser to know ahead of time how much space to reserve for an image. It also helps eliminate layout shift.
@@ -69,11 +72,11 @@ There are three steps I took to improving image loading speed.
 
 After implementing the image format conversion and setting explicit widths and heights on my images, there was a noticeable increase in the image loading speed. However, I still wasn't happy with how much pop-in could occur when visiting a page with a lot of images (like the [projects page](/projects)).
 
-I thought a good solution would be to prefetch the images before loading the page, but I didn't want to blindly prefetch every image on my site for every page navigation. So I needed a way to detect a user's _intent_ that they would visit a page. There is a common pattern in web development of prefetching on hover, giving your server/CDN extra precious milliseconds to send back the asset before the user actually clicks. I decided I would implement this for images on certain pages.
+A good solution would be to prefetch the images before loading the page, but I didn't want to blindly prefetch every image on my site for every page navigation. So, I needed a way to detect a user's _intent_ that they would visit a page. There is a common pattern in web development of prefetching on hover, giving your server/CDN extra precious milliseconds to send back the asset before the user actually clicks. I thought this would be great to implement for images on certain pages.
 
-The problem is that there is no native way to do this with Astro, so I would have to roll my own.
+The problem was that there is no native way to do this with Astro, so I would have to roll my own.
 
-I started by deciding which pages would be good candidates for prefetching images. I decided on the [projects](/projects), [blog](/blog), and [resume](/resume) pages. These all have two or more images and suffered the most from image pop-in.
+I started by deciding which pages would be good candidates for prefetching images. The [projects](/projects), [blog](/blog), and [resume](/resume) pages were good fits. These all have two or more images and suffered the most from image pop-in.
 
 To detect user intent, I used the `x-on:mouseenter` directive from Alpine.
 
@@ -81,7 +84,7 @@ To detect user intent, I used the `x-on:mouseenter` directive from Alpine.
 <a href="/blog" x-on:mouseenter="...">
 ```
 
-Now, what to put in the event handler? Well, I basically just needed to write some JavaScript that would loop over the images I wanted to prefetch and append `<link rel="prefetch">` tags in the document. If you're not familiar with how Alpine works, you basically just write JavaScript in the string and Alpine executes it for you. I made a utility function to create this little bit of JavaScript.
+Now, what to put in the event handler? I basically just needed to write some JavaScript that would loop over the images I wanted to prefetch and append `<link rel="prefetch">` tags in the document. If you're not familiar with how Alpine works, you basically just write JavaScript in the string value of an element attribute and Alpine executes it for you. I made a utility function to create this little bit of JavaScript.
 
 ```ts
 export function createImagePrefetchScript(src: string) {
@@ -106,6 +109,8 @@ To use it, it's a simple as this.
   <a href="/wherever" x-on:mouseenter={createImagePrefetchScript('/img/image-1.webp')}>
 </div>
 ```
+
+Now, on hover, the browser fetches `image-1.webp` before you've even visited the page that uses it. When you do click the link, the image is immediately available from the prefetch cache.
 
 ### The Takeaway
 
