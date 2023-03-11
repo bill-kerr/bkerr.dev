@@ -1,15 +1,23 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
+import { createImagePrefetchScript } from "~/utils/prefetch";
+
+const projectImages = await getCollection("projects").then((collection) => collection.map((entry) => entry.data.previewImg));
+
+const projectImagePrefetch = {
+	'x-on:mouseenter': projectImages.map(createImagePrefetchScript).join(''),
+}
 ---
 
 <Layout title={null}>
 	<div class="pb-12 h-full flex items-center flex-grow">
-		<div>
+		<div x-data="{ prefetched: new Set() }">
 			<h1 class="mt-1 text-5xl md:text-7xl font-black">
 				I build technology-driven
 				<span class="pl-3 pr-6 shadow-blue-100 text-blue-800">solutions</span>
 			</h1>
-			<div class="mt-12 sm:mt-6 flex flex-col sm:flex-row text-center">
+			<div class="mt-12 sm:mt-6 flex flex-col sm:flex-row text-center" {...projectImagePrefetch}>
 				<a
 					href="/projects/"
 					class="px-5 py-3 text-lg text-white font-bold bg-blue-600 hover:bg-blue-700 transition-colors rounded-lg shadow max-w-xs"
