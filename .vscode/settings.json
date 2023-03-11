@@ -6,6 +6,7 @@
     "astro",
     "astrojs",
     "bkerr",
-    "tailwindcss"
+    "tailwindcss",
+    "webp"
   ]
 }
