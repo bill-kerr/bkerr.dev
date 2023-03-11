@@ -100,12 +100,12 @@ export function createImagePrefetchScript(src: string) {
 }
 ```
 
-Take note of the `prefetched.has(...)` check in the beginning. I wrap the element that I would like to place this script on in another element that has `x-data="{ prefetch: new Set() }"` so that I can keep track of which assets I've already prefetched.
+Take note of the `prefetched.has(...)` check in the beginning. I wrap the element that I would like to place this script on in another element that has `x-data="{ prefetched: new Set() }"` so that I can keep track of which assets I've already prefetched.
 
 To use it, it's a simple as this.
 
 ```html
-<div x-data="{ prefetch: new Set() }">
+<div x-data="{ prefetched: new Set() }">
   <a href="/wherever" x-on:mouseenter={createImagePrefetchScript('/img/image-1.webp')}>
 </div>
 ```
