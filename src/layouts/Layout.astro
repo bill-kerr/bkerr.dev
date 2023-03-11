@@ -29,7 +29,11 @@ const mainClass = currentPage === "home" ? "" : "pb-64";
 		)}
 		<title>{fullTitle}</title>
 	</head>
-	<body class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen">
+	<body 
+		class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen" 
+		x-data="{menuOpen: false}"
+		x-bind:class="{'overflow-hidden': menuOpen}"
+	>
 		<div class="relative hidden lg:block" role="presentation" aria-hidden="true">
 			<div class="absolute top-2 right-2">
 				<img src="/img/square-pattern.svg" alt="pattern" class="h-56 transform rotate-90" />

@@ -1,5 +1,5 @@
 ---
-date: 2023-03-11T05:00:00Z
+date: 2023-03-11T22:10:59.899Z
 title: Creating a Blazing Fast Site with Netlify and Astro
 preview: As you click around this site, you may notice it's pretty fast. Here are some tricks I used to make it so speedy.
 previewImg: /img/blazing-fast.webp
@@ -18,7 +18,7 @@ I was never thrilled with the speed of the old site--and truth be told, I didn't
 
 ### **Caching**
 
-The first thing I knew I had to do better was caching. The old site would send a request for a new document every time. This is great if you have a frequently updating website, but as you might surmise from the frequency of my blog posts, that just isn't the case for this site.
+The first thing I knew I had to do better was caching. The old site would send a request for a new document every time. That's great if you have a frequently updating website, but as you might surmise from the frequency of my blog posts, that just isn't the case for this site.
 
 Netlify has a great CDN that caches pages automatically, but it still requires a trip to their CDN to get the cached version. These requests took about 60 milliseconds on average. That's great--but we can do better. Netlify allows you to modify response headers via a `_headers` file. I started out by setting some `Cache-Control` headers. In the file below, you can see my reasoning for each cache value.
 
