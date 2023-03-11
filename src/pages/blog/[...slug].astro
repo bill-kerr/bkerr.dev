@@ -18,10 +18,17 @@ type Props = {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
+const absoluteImageSrc = `https://bkerr.dev${entry.data.previewImg}`;
+
 const meta = [
+	{ property: 'og:type', content: 'blog' },
 	{ property: 'og:title', content: entry.data.title },
+	{ property: 'twitter:title', content: entry.data.title },
 	{ property: 'og:description', content: entry.data.preview },
-	{ property: 'og:image', content: `https://bkerr.dev${entry.data.previewImg}` },
+	{ property: 'twitter:description', content: entry.data.preview },
+	{ property: 'og:image', content: absoluteImageSrc },
+	{ property: 'twitter:image', content: absoluteImageSrc },
+	{ property: 'twitter:card', content: 'summary_large_image' },
 ] as const;
 ---
 
