@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getCurrentPage, Page } from "~/utils/page";
+import { createImagePrefetchScript } from "~/utils/prefetch";
 
 const currentPage = getCurrentPage(Astro.url);
 
@@ -15,16 +16,8 @@ function getLinkClasses(page: Page) {
 
 const blogImages = await getCollection("blog").then((collection) => collection.map((entry) => entry.data.previewImg));
 const projectImages = await getCollection("projects").then((collection) => collection.map((entry) => entry.data.previewImg));
+const resumeImages = ["/img/drexel-logo.webp", "/img/jja-logo.svg"]
 
-function createImagePrefetchScript(src: string, index: number) {
-	return `if (!prefetched.has("${src}")){` +
-			`const link${index}=document.createElement("link");` +
-			`link${index}.rel="prefetch";` +
-			`link${index}.href="${src}";` + 
-			`link${index}.type="image/webp";` + 
-			`$el.appendChild(link${index});` +
-			`prefetched.add("${src}");}`;
-}
 
 const blogImagePrefetch = {
 	'x-on:mouseenter': blogImages.map(createImagePrefetchScript).join(''),
@@ -32,6 +25,10 @@ const blogImagePrefetch = {
 
 const projectImagePrefetch = {
 	'x-on:mouseenter': projectImages.map(createImagePrefetchScript).join(''),
+}
+
+const resumeImagePrefetch = {
+	'x-on:mouseenter': resumeImages.map(createImagePrefetchScript).join(''),
 }
 ---
 
@@ -46,7 +43,7 @@ const projectImagePrefetch = {
 		<li {...projectImagePrefetch}>
 			<a href="/projects/" rel="prefetch" class={getLinkClasses("projects")}>Projects</a>
 		</li>
-		<li>
+		<li {...resumeImagePrefetch}>
 			<a href="/resume/" rel="prefetch" class={getLinkClasses("resume")}>Resume</a>
 		</li>
 		<li>
