@@ -1,5 +1,5 @@
 /*
-  Cache-Control: public, max-age=0, stale-while-revalidate=31536000
+  Cache-Control: public, max-age=900, stale-while-revalidate=31536000
 
 /fonts/*
   Cache-Control: public, immutable
