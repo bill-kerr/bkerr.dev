@@ -4,6 +4,7 @@ import IconGithub from "~/components/icons/IconGithub.astro";
 import IconLinkedIn from "~/components/icons/IconLinkedIn.astro";
 import IconMenu from "~/components/icons/IconMenu.astro";
 import IconX from "~/components/icons/IconX.astro";
+import SquarePattern from "~/components/SquarePattern.astro";
 
 const page = getCurrentPage(Astro.url);
 
@@ -97,14 +98,10 @@ function getLinkClass(linkPage: Page): string {
 				<span class="sr-only">LinkedIn</span>
 			</a>
 		</div>
-		<div class="absolute bottom-2 right-2" role="presentation">
-			<img
-				src="/img/square-pattern.svg"
-				alt="pattern"
-				class="transform rotate-180"
-				height="224px"
-				width="224px"
-			/>
-		</div>
+		<SquarePattern
+			class="transform rotate-180 absolute bottom-2 right-2"
+			height="224px"
+			width="224px"
+		/>
 	</div>
 </div>

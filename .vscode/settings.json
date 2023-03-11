@@ -1,12 +1,16 @@
 {
-  "javascript.preferences.importModuleSpecifier": "relative",
+	"javascript.preferences.importModuleSpecifier": "relative",
 	"typescript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": [
-    "alpinejs",
-    "astro",
-    "astrojs",
-    "bkerr",
-    "tailwindcss",
-    "webp"
-  ]
+	"cSpell.words": [
+		"alpinejs",
+		"astro",
+		"astrojs",
+		"bkerr",
+		"Kenji",
+		"Laravel",
+		"tailwindcss",
+		"Wathan",
+		"webp",
+		"Whorter"
+	]
 }

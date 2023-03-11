@@ -14,26 +14,32 @@ function getLinkClasses(page: Page) {
 	return page === currentPage ? activeClasses : inactiveClasses;
 }
 
-const blogImages = await getCollection("blog").then((collection) => collection.map((entry) => entry.data.previewImg));
-const projectImages = await getCollection("projects").then((collection) => collection.map((entry) => entry.data.previewImg));
-const resumeImages = ["/img/drexel-logo.webp", "/img/jja-logo.svg"]
-
+const blogImages = await getCollection("blog").then((collection) =>
+	collection.map((entry) => entry.data.previewImg),
+);
+const projectImages = await getCollection("projects").then((collection) =>
+	collection.map((entry) => entry.data.previewImg),
+);
+const resumeImages = ["/img/drexel-logo.webp", "/img/jja-logo.svg"];
 
 const blogImagePrefetch = {
-	'x-on:mouseenter': blogImages.map(createImagePrefetchScript).join(''),
+	"x-on:mouseenter": blogImages.map(createImagePrefetchScript).join(""),
 };
 
 const projectImagePrefetch = {
-	'x-on:mouseenter': projectImages.map(createImagePrefetchScript).join(''),
-}
+	"x-on:mouseenter": projectImages.map(createImagePrefetchScript).join(""),
+};
 
 const resumeImagePrefetch = {
-	'x-on:mouseenter': resumeImages.map(createImagePrefetchScript).join(''),
-}
+	"x-on:mouseenter": resumeImages.map(createImagePrefetchScript).join(""),
+};
 ---
 
 <nav class="hidden lg:block">
-	<ul class="flex items-center space-x-5 text-gray-600 font-black leading-none" x-data="{ prefetched: new Set() }">
+	<ul
+		class="flex items-center space-x-5 text-gray-600 font-black leading-none"
+		x-data="{ prefetched: new Set() }"
+	>
 		<li>
 			<a href="/about/" rel="prefetch" class={getLinkClasses("about")}>About Me</a>
 		</li>

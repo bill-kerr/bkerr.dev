@@ -3,11 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import { createImagePrefetchScript } from "~/utils/prefetch";
 
-const projectImages = await getCollection("projects").then((collection) => collection.map((entry) => entry.data.previewImg));
+const projectImages = await getCollection("projects").then((collection) =>
+	collection.map((entry) => entry.data.previewImg),
+);
 
 const projectImagePrefetch = {
-	'x-on:mouseenter': projectImages.map(createImagePrefetchScript).join(''),
-}
+	"x-on:mouseenter": projectImages.map(createImagePrefetchScript).join(""),
+};
 ---
 
 <Layout title={null}>

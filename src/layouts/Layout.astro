@@ -1,14 +1,16 @@
 ---
 import Nav from "~/components/Nav.astro";
 import SideBar from "~/components/SideBar.astro";
+import SquarePattern from "~/components/SquarePattern.astro";
 import { getCurrentPage } from "~/utils/page";
 
 export interface Props {
 	title: string | null;
-	meta?: Readonly<{ property: string, content: string }[]>;
+	meta?: Readonly<{ property: string; content: string }[]>;
 }
 
-const { title, meta = [{ property: "description", content: "Bill Kerr's personal website" }] } = Astro.props;
+const { title, meta = [{ property: "description", content: "Bill Kerr's personal website" }] } =
+	Astro.props;
 
 const commonTitle = "Bill Kerr - Software Developer";
 const fullTitle = title ? `${title} | ${commonTitle}` : commonTitle;
@@ -24,20 +26,20 @@ const mainClass = currentPage === "home" ? "" : "pb-64";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		{meta.map(({ property, content }) => 
-			<meta property={property} content={content} />
-		)}
+		{meta.map(({ property, content }) => <meta property={property} content={content} />)}
 		<title>{fullTitle}</title>
 	</head>
-	<body 
-		class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen" 
+	<body
+		class="bg-gray-50 antialiased text-gray-900 lg:bg-wave bg-no-repeat bg-bottom min-h-screen"
 		x-data="{menuOpen: false}"
 		x-bind:class="{'overflow-hidden': menuOpen}"
 	>
 		<div class="relative hidden lg:block" role="presentation" aria-hidden="true">
-			<div class="absolute top-2 right-2">
-				<img src="/img/square-pattern.svg" alt="pattern" class="h-56 transform rotate-90" />
-			</div>
+			<SquarePattern
+				class="transform rotate-90 absolute top-2 right-2"
+				height="224px"
+				width="224px"
+			/>
 		</div>
 
 		<div class="relative max-w-screen-lg mx-auto p-6 flex flex-col lg:flex-row min-h-screen">

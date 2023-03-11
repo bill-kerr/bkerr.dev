@@ -64,7 +64,7 @@ export const favoriteThings = [
 		things: [
 			{
 				title: "Colin McDonnell",
-				description: "Creator of Zod and terrific open source contributer for TypeScript.",
+				description: "Creator of Zod and terrific open source contributor for TypeScript.",
 				url: "https://github.com/colinhacks",
 			},
 			{
