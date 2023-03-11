@@ -63,9 +63,9 @@ Similarly, when you visit the [projects](/projects) or [blog](/blog) pages, they
 
 There are three steps I took to improving image loading speed.
 
-1. I converted all images to `.webp` or `.svg`. These formats have smaller file sizes than `.jpg` or `.png`.
-2. I set explicit widths and heights on `<img>` tags. This allows the browser to know ahead of time how much space to reserve for an image. It also helps eliminate layout shift.
-3. I prefetched some images (explained below).
+- I converted all images to `.webp` or `.svg`. These formats have smaller file sizes than `.jpg` or `.png`.
+- I set explicit widths and heights on `<img>` tags. This allows the browser to know ahead of time how much space to reserve for an image. It also helps eliminate layout shift.
+- I prefetched some images (explained below).
 
 After implementing the image format conversion and setting explicit widths and heights on my images, there was a noticeable increase in the image loading speed. However, I still wasn't happy with how much pop-in could occur when visiting a page with a lot of images (like the [projects page](/projects)).
 

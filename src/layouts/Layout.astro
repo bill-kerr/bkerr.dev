@@ -167,7 +167,7 @@ const mainClass = currentPage === "home" ? "" : "pb-64";
 		@apply my-3 p-2 rounded-lg text-sm bg-gray-800 text-white font-mono overflow-x-auto;
 	}
 
-	.markdown p > code {
+	.markdown :not(pre) > code {
 		@apply px-1 py-0.5 rounded text-sm bg-gray-200 font-mono;
 	}
 
