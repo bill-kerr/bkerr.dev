@@ -9,8 +9,7 @@ export interface Props {
 	meta?: Readonly<{ property: string; content: string }[]>;
 }
 
-const { title, meta = [{ property: "description", content: "Bill Kerr's personal website" }] } =
-	Astro.props;
+const { title, meta = [] } = Astro.props;
 
 const commonTitle = "Bill Kerr - Software Developer";
 const fullTitle = title ? `${title} | ${commonTitle}` : commonTitle;
@@ -25,7 +24,17 @@ const mainClass = currentPage === "home" ? "" : "pb-64";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preload" href="/fonts/NunitoSans-Black.ttf" as="font" type="font/ttf" />
+		<link rel="preload" href="/fonts/NunitoSans-Bold.ttf" as="font" type="font/ttf" />
+		<link rel="preload" href="/fonts/NunitoSans-Regular.ttf" as="font" type="font/ttf" />
+		<link
+			rel="preload"
+			href="/fonts/SourceCodePro-VariableFont_wght.ttf"
+			as="font"
+			type="font/ttf"
+		/>
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Bill Kerr's personal website" />
 		{meta.map(({ property, content }) => <meta property={property} content={content} />)}
 		<title>{fullTitle}</title>
 	</head>
