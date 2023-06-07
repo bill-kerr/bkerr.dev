@@ -5,10 +5,24 @@ preview: As you click around this site, you may notice it's pretty fast. Here ar
 previewImg: /img/blazing-fast.webp
 ---
 
+import Alert from "~/components/Alert.astro";
 
-<img src="/img/blazing-fast.webp" alt="A man on a bicycle going so fast the background is blurry" class="h-96 object-cover object-middle rounded-lg w-full" height="828" width="640" />
+<img
+	src="/img/blazing-fast.webp"
+	alt="A man on a bicycle going so fast the background is blurry"
+	class="h-96 object-cover object-middle rounded-lg w-full"
+	height="828"
+	width="640"
+/>
 
 # **Creating a Blazing Fast Site with Netlify and Astro**
+
+<Alert title="Update">
+	Since writing this article, I have transferred the hosting platform to [Cloudflare
+	Pages](https://pages.cloudflare.com/). Netlify's [support for custom cache
+	headers](https://answers.netlify.com/t/netlify-ignores-cache-control-for-304/2912/1) does not
+	enable my use case as outlined by this post.
+</Alert>
 
 I recently converted my personal website (this website) from [HUGO](https://gohugo.io) to [Astro](https://astro.build). There were many reasons, but the main one was that the templating syntax in HUGO just wasn't very good. Additionally, it has very little modern editor support, has no type help, and is just very unwieldy.
 
@@ -81,22 +95,24 @@ I started by deciding which pages would be good candidates for prefetching image
 To detect user intent, I used the `x-on:mouseenter` directive from Alpine.
 
 ```html
-<a href="/blog" x-on:mouseenter="...">
+<a href="/blog" x-on:mouseenter="..."></a>
 ```
 
 Now, what to put in the event handler? I basically just needed to write some JavaScript that would loop over the images I wanted to prefetch and append `<link rel="prefetch">` tags in the document. If you're not familiar with how Alpine works, you basically just write JavaScript in the string value of an element attribute and Alpine executes it for you. I made a utility function to create this little bit of JavaScript.
 
 ```ts
 export function createImagePrefetchScript(src: string) {
-  const varName = `i${Math.floor(Math.random() * 10000)}`;
+	const varName = `i${Math.floor(Math.random() * 10000)}`;
 
-	return `if (!prefetched.has("${src}")){` +
-			`const ${varName}=document.createElement("link");` +
-			`${varName}.rel="prefetch";` +
-			`${varName}.href="${src}";` + 
-			`${varName}.type="image/webp";` + 
-			`$el.appendChild(${varName});` +
-			`prefetched.add("${src}");}`;
+	return (
+		`if (!prefetched.has("${src}")){` +
+		`const ${varName}=document.createElement("link");` +
+		`${varName}.rel="prefetch";` +
+		`${varName}.href="${src}";` +
+		`${varName}.type="image/webp";` +
+		`$el.appendChild(${varName});` +
+		`prefetched.add("${src}");}`
+	);
 }
 ```
 
@@ -106,7 +122,7 @@ To use it, it's a simple as this.
 
 ```html
 <div x-data="{ prefetched: new Set() }">
-  <a href="/wherever" x-on:mouseenter={createImagePrefetchScript('/img/image-1.webp')}>
+	<a href="/wherever" x-on:mouseenter={createImagePrefetchScript('/img/image-1.webp')}>
 </div>
 ```
 
