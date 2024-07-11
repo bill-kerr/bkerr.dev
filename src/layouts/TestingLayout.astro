@@ -21,6 +21,15 @@
 				</p>
 				<slot />
 			</div>
+			<div
+				class="absolute bottom-4 right-4 flex flex-col gap-2 shadow-sm border rounded-xl p-6 items-start"
+			>
+				<a href="/testing/shop/text-match" class="hyperlink">Text Match</a>
+				<a href="/testing/shop/sharpness" class="hyperlink">Sharpness</a>
+				<a href="/testing/shop/brightness" class="hyperlink">Brightness</a>
+				<a href="/testing/shop/resolution" class="hyperlink">Resolution</a>
+				<a href="/testing/shop/aspect-ratio" class="hyperlink">Aspect Ratio</a>
+			</div>
 		</main>
 	</body>
 </html>
@@ -56,5 +65,9 @@
 		font-weight: 100 900;
 		font-style: normal;
 		font-display: swap;
+	}
+
+	.hyperlink {
+		@apply shadow-blue-100 hover:shadow-blue-200 transition-colors;
 	}
 </style>
