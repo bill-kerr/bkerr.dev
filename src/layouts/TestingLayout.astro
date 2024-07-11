@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Bill Kerr's personal website" />
+		<title>Bella's Pizzeria</title>
+	</head>
+	<body class="antialiased text-gray-900 min-h-screen">
+		<main class="relative max-w-screen-lg mx-auto p-6 flex flex-col lg:flex-row min-h-screen">
+			<div>
+				<h1 class="text-lg font-bold">Welcome to Bella's Pizzeria!</h1>
+				<p class="mt-2">
+					Welcome to Bella's Pizzeria, where every pizza is crafted with love and the finest
+					ingredients. Our hand-tossed dough, rich tomato sauce, and premium toppings come together
+					to create an unforgettable dining experience. Whether you prefer a classic Margherita, a
+					meat lover's feast, or a veggie delight, we have something for every palate. Join us at
+					Bella's Pizzeria, where quality and flavor meet tradition. Come taste the difference!
+				</p>
+				<slot />
+			</div>
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	@font-face {
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Regular.ttf");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Bold.ttf");
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Nunito Sans";
+		src: url("/fonts/NunitoSans-Black.ttf");
+		font-weight: 900;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Source Code Pro";
+		src: url("/fonts/SourceCodePro-VariableFont_wght.ttf");
+		font-weight: 100 900;
+		font-style: normal;
+		font-display: swap;
+	}
+</style>

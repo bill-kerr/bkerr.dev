@@ -241,7 +241,7 @@ function transform<T>(body: T | T[], groups: string[]) {
 		? {
 				object: "list",
 				data: body.map((item) => classToPlain(item, { groups, excludeExtraneousValues: true })),
-		  }
+			}
 		: classToPlain(body, { groups, excludeExtraneousValues: true });
 }
 ```
