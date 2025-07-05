@@ -7,7 +7,9 @@
 		"start": "astro dev",
 		"build": "astro build && cp _headers ./dist",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"analyze:images": "node scripts/optimize-images.js",
+		"analyze:perf": "npm run build && npm run analyze:images"
 	},
 	"dependencies": {
 		"@astrojs/alpinejs": "^0.3.0",

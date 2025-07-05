@@ -1,6 +1,7 @@
 ---
 import IconDownload from "~/components/icons/IconDownload.astro";
 import IconLink from "~/components/icons/IconLink.astro";
+import OptimizedImage from "~/components/OptimizedImage.astro";
 import ResumeHeader from "~/components/ResumeHeader.astro";
 import ResumeItem from "~/components/ResumeItem.astro";
 import Layout from "~/layouts/Layout.astro";
@@ -99,7 +100,13 @@ import Layout from "~/layouts/Layout.astro";
 			<div class="mt-4 flex justify-between">
 				<div class="flex md:items-center">
 					<a href="https://drexel.edu" class="mt-1 md:mt-0 flex-shrink-0 self-start">
-						<img src="/img/drexel-logo.webp" alt="Drexel University" class="w-14" />
+						<OptimizedImage 
+							src="/img/drexel-logo.webp" 
+							alt="Drexel University" 
+							width={56} 
+							height={56} 
+							class="w-14" 
+						/>
 					</a>
 					<div class="ml-4">
 						<p class="text-lg font-bold">Drexel University</p>
@@ -129,9 +136,11 @@ import Layout from "~/layouts/Layout.astro";
 			<div class="mt-4 flex justify-between">
 				<div class="flex">
 					<a href="https://jjaconstruction.com" class="mt-1 w-14 flex-shrink-0 self-start">
-						<img
+						<OptimizedImage
 							src="/img/jja-logo.svg"
 							alt="James J. Anderson Construction Co., Inc."
+							width={56}
+							height={40}
 							class="mx-auto h-10"
 						/>
 					</a>
