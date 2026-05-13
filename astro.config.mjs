@@ -7,5 +7,5 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
 	site: "https://bkerr.dev",
 	prefetch: true,
-	integrations: [tailwind(), alpinejs(), mdx(), sitemap({ filenameBase: "test-sitemap" })],
+	integrations: [tailwind(), alpinejs(), mdx(), sitemap()],
 });
